@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     Vector3 currentVelocity;
 
     
-    private float direcaoMovimento;
+    /*private float direcaoMovimento;
     private float timerPulo;
     private float timerVira;
 
@@ -45,35 +45,36 @@ public class PlayerController : MonoBehaviour
 
     public Transform chao;
 
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround;*/
 
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        pulosRestantes = quantosPulos;
+        //anim = GetComponent<Animator>();
+        //pulosRestantes = quantosPulos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckInput();
-        CheckMovementDirection();
-        UpdateAnimations();
-        CheckIfCanJump();
-        CheckJump();
+        //CheckInput();
+        //CheckMovementDirection();
+        //UpdateAnimations();
+        //CheckIfCanJump();
+        //CheckJump();
+        Walking();
     }
 
     private void FixedUpdate()
     {
-        ApplyMovement();
-        CheckSurroundings();
+        //ApplyMovement();
+        //CheckSurroundings();
     }
 
-    private void CheckSurroundings()
+    /*private void CheckSurroundings()
     {
         estaNoChao = Physics2D.OverlapCircle(chao.position, raioChao, whatIsGround);
-    }
+    }*/
 
     private void Walking(){
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         velocity = Vector3.SmoothDamp(velocity, direction * maxSpeed, ref  currentVelocity, maxSpeed/Acceleration);
 
-        transform.position += velocity * timerPulo.deltaTime;
+        transform.position += velocity * Time.deltaTime;
     }
 
     //L�gica para liberar pulo
@@ -123,7 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             estaAndando = false;
         }
-    }*/
+    }
 
     private void UpdateAnimations()
     {
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ApplyMovement()
+   private void ApplyMovement()
     {
 
         if (!estaNoChao && direcaoMovimento == 0)
