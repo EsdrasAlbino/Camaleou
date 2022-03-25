@@ -177,6 +177,8 @@ public class PlayerController : MonoBehaviour
             multiplicadorDePuloCheck = true;
         }
     }
+
+
    private void ApplyMovement()
     {
         if (!estaNoChao && direcaoMovimento == 0)
