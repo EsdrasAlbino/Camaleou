@@ -11,13 +11,11 @@ public class PlayerController : MonoBehaviour
     Vector3 currentVelocity;
 
     
-    private float direcaoMovimento;
+    /*private float direcaoMovimento;
     private float timerPulo;
     private float timerVira;
-
     private int pulosRestantes;
     private int dierecaoOlhando = 1;
-
     private bool estaOlhandoDireita = true;
     [SerializeField]
     private bool estaNoChao;
@@ -28,12 +26,9 @@ public class PlayerController : MonoBehaviour
     private bool multiplicadorDePuloCheck;
     private bool podeMover;
     private bool podeGirar;
-
     private Rigidbody2D rb;
     private Animator anim;
-
     public int quantosPulos = 1;
-
     public float forcaPulo = 16.0f;
     public float chaoCheck;
     public float raioChao;
@@ -42,38 +37,37 @@ public class PlayerController : MonoBehaviour
     public float timerPuloSet = 0.15f;
     public float timerViraSer = 0.1f;
     public float distanceBetweenImages;
-
     public Transform chao;
-
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround;*/
 
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        pulosRestantes = quantosPulos;
+        //anim = GetComponent<Animator>();
+        //pulosRestantes = quantosPulos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckInput();
-        CheckMovementDirection();
-        UpdateAnimations();
-        CheckIfCanJump();
-        CheckJump();
+        //CheckInput();
+        //CheckMovementDirection();
+        //UpdateAnimations();
+        //CheckIfCanJump();
+        //CheckJump();
+        Walking();
     }
 
     private void FixedUpdate()
     {
-        ApplyMovement();
-        CheckSurroundings();
+        //ApplyMovement();
+        //CheckSurroundings();
     }
 
-    private void CheckSurroundings()
+    /*private void CheckSurroundings()
     {
         estaNoChao = Physics2D.OverlapCircle(chao.position, raioChao, whatIsGround);
-    }
+    }*/
 
     private void Walking(){
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -82,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         velocity = Vector3.SmoothDamp(velocity, direction * maxSpeed, ref  currentVelocity, maxSpeed/Acceleration);
 
-        transform.position += velocity * timerPulo.deltaTime;
+        transform.position += velocity * Time.deltaTime;
     }
 
     //L�gica para liberar pulo
@@ -92,7 +86,6 @@ public class PlayerController : MonoBehaviour
         {
             pulosRestantes = quantosPulos;
         }
-
         if (pulosRestantes <= 0)
         {
             podePular = false;
@@ -101,7 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             podePular = true;
         }
-
     }*/
 
    /* private void CheckMovementDirection()
@@ -114,7 +106,6 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
-
         if (Mathf.Abs(rb.velocity.x) >= 0.01f)
         {
             estaAndando = true;
@@ -123,19 +114,16 @@ public class PlayerController : MonoBehaviour
         {
             estaAndando = false;
         }
-    }*/
-
+    }
     private void UpdateAnimations()
     {
         //anim.SetBool("isWalking", estaAndando);
         //anim.SetBool("isGrounded", estaNoChao);
         //anim.SetFloat("yVelocity", rb.velocity.y);
     }
-
     private void CheckInput()
     {
         direcaoMovimento = Input.GetAxisRaw("Horizontal");
-
         if (Input.GetButtonDown("Jump"))
         {
             if (estaNoChao || (pulosRestantes > 0))
@@ -148,46 +136,36 @@ public class PlayerController : MonoBehaviour
                 estaTentandoPular = true;
             }
         }
-
         if (timerVira >= 0)
         {
             timerVira -= Time.deltaTime;
-
             if (timerVira <= 0)
             {
                 podeMover = true;
                 podeGirar = true;
             }
         }
-
         if (multiplicadorDePuloCheck && !Input.GetButton("Jump"))
         {
             multiplicadorDePuloCheck = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * multiPuloAlto);
         }
-
     }
-
-
     public int GetFacingDirection()
     {
         return dierecaoOlhando;
     }
-
     private void CheckJump()
     {
         if (timerPulo > 0) //time pulo == 0.15
         {
             NormalJump();
         }
-
         if (estaTentandoPular)
         {
             timerPulo -= Time.deltaTime;
         }
-
     }
-
     private void NormalJump()
     {
         if (podePular)
@@ -199,11 +177,8 @@ public class PlayerController : MonoBehaviour
             multiplicadorDePuloCheck = true;
         }
     }
-
-
-    private void ApplyMovement()
+   private void ApplyMovement()
     {
-
         if (!estaNoChao && direcaoMovimento == 0)
         {
             rb.velocity = new Vector2(rb.velocity.x * forcaAr, rb.velocity.y);
@@ -212,20 +187,15 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(velocidadeMovimentacao * direcaoMovimento, rb.velocity.y);
         }
-
-
     }
-
     public void DisableFlip()
     {
         podeGirar = false;
     }
-
     public void EnableFlip()
     {
         podeGirar = true;
     }
-
     private void Flip()
     {
         if (podeGirar)
@@ -235,7 +205,6 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0.0f, 180.0f, 0.0f);
         }
     }
-
    /* private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(chao.position, raioChao);
