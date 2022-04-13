@@ -4,70 +4,75 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Vector3 velocity;
+    private Rigidbody2D rb;
+
+    //Movement
     public float Acceleration = 10.0f;
     public float maxSpeed = 10;
+    Vector3 velocity;
     Vector3 direction = Vector3.zero;
     Vector3 currentVelocity;
 
-    
-    /*private float direcaoMovimento;
-    private float timerPulo;
-    private float timerVira;
+    //Jump
     private int pulosRestantes;
+    public int quantosPulos = 1;
+    public float raioChao;
+    private float timerPulo;
+    public float timerPuloSet = 0.15f;
+    public float forcaPulo = 16.0f;
+    public float multiPuloAlto = 0.5f;
+    private bool podePular;
+    private bool estaNoChao;
+    private bool estaTentandoPular;
+    private bool multiplicadorDePuloCheck;
+    public Transform chao;
+    public LayerMask whatIsGround;
+
+    /*private float direcaoMovimento;
+    private float timerVira;
     private int dierecaoOlhando = 1;
     private bool estaOlhandoDireita = true;
     [SerializeField]
-    private bool estaNoChao;
     private bool estaAndando;
     [SerializeField]
-    private bool podePular;
-    private bool estaTentandoPular;
-    private bool multiplicadorDePuloCheck;
     private bool podeMover;
     private bool podeGirar;
-    private Rigidbody2D rb;
     private Animator anim;
-    public int quantosPulos = 1;
-    public float forcaPulo = 16.0f;
     public float chaoCheck;
-    public float raioChao;
-    public float multiPuloAlto = 0.5f;
     public float forcaAr = 0.95f;
-    public float timerPuloSet = 0.15f;
     public float timerViraSer = 0.1f;
     public float distanceBetweenImages;
-    public Transform chao;
-    public LayerMask whatIsGround;*/
+    */
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
-        //pulosRestantes = quantosPulos;
+        pulosRestantes = quantosPulos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //CheckInput();
+        CheckInput();
+        CheckIfCanJump();
+        CheckJump();
+        Walking();
         //CheckMovementDirection();
         //UpdateAnimations();
-        //CheckIfCanJump();
-        //CheckJump();
-        Walking();
+
     }
 
     private void FixedUpdate()
     {
         //ApplyMovement();
-        //CheckSurroundings();
+        CheckSurroundings();
     }
 
-    /*private void CheckSurroundings()
+    private void CheckSurroundings()
     {
         estaNoChao = Physics2D.OverlapCircle(chao.position, raioChao, whatIsGround);
-    }*/
+    }
 
     private void Walking(){
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -79,10 +84,10 @@ public class PlayerController : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
     }
 
-    //L�gica para liberar pulo
-    /*private void CheckIfCanJump()
+    //Logica para liberar pulo
+    private void CheckIfCanJump()
     {
-        if (estaNoChao && rb.velocity.y <= 0.01f)
+        if (estaNoChao)
         {
             pulosRestantes = quantosPulos;
         }
@@ -94,8 +99,69 @@ public class PlayerController : MonoBehaviour
         {
             podePular = true;
         }
-    }*/
+    }
+        private void NormalJump()
+    {
+        if (podePular)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            pulosRestantes--;
+            timerPulo = 0;
+            estaTentandoPular = false;
+            multiplicadorDePuloCheck = true;
+        }
+    }
+        private void CheckJump()
+    {
+        if (timerPulo > 0) //time pulo == 0.15
+        {
+            NormalJump();
+        }
+        if (estaTentandoPular)
+        {
+            timerPulo -= Time.deltaTime;
+        }
+    }
 
+    private void CheckInput()
+    {
+        //direcaoMovimento = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKeyDown("w"))
+        {
+            if (estaNoChao || (pulosRestantes > 0))
+            {
+                NormalJump();
+            }
+            else
+            {
+                timerPulo = timerPuloSet; // timer pulo == 0.15
+                estaTentandoPular = true;
+            }
+        }
+       /* if (timerVira >= 0)
+        {
+            timerVira -= Time.deltaTime;
+            if (timerVira <= 0)
+            {
+                podeMover = true;
+                podeGirar = true;
+            }
+        }*/
+        if (multiplicadorDePuloCheck && !Input.GetButton("w"))
+        {
+            multiplicadorDePuloCheck = false;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * multiPuloAlto);
+        }
+    }
+
+
+
+
+
+
+
+
+    
    /* private void CheckMovementDirection()
     {
         if (estaOlhandoDireita && direcaoMovimento < 0)
@@ -121,61 +187,10 @@ public class PlayerController : MonoBehaviour
         //anim.SetBool("isGrounded", estaNoChao);
         //anim.SetFloat("yVelocity", rb.velocity.y);
     }
-    private void CheckInput()
-    {
-        direcaoMovimento = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (estaNoChao || (pulosRestantes > 0))
-            {
-                NormalJump();
-            }
-            else
-            {
-                timerPulo = timerPuloSet; // timer pulo == 0.15
-                estaTentandoPular = true;
-            }
-        }
-        if (timerVira >= 0)
-        {
-            timerVira -= Time.deltaTime;
-            if (timerVira <= 0)
-            {
-                podeMover = true;
-                podeGirar = true;
-            }
-        }
-        if (multiplicadorDePuloCheck && !Input.GetButton("Jump"))
-        {
-            multiplicadorDePuloCheck = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * multiPuloAlto);
-        }
-    }
+
     public int GetFacingDirection()
     {
         return dierecaoOlhando;
-    }
-    private void CheckJump()
-    {
-        if (timerPulo > 0) //time pulo == 0.15
-        {
-            NormalJump();
-        }
-        if (estaTentandoPular)
-        {
-            timerPulo -= Time.deltaTime;
-        }
-    }
-    private void NormalJump()
-    {
-        if (podePular)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
-            pulosRestantes--;
-            timerPulo = 0;
-            estaTentandoPular = false;
-            multiplicadorDePuloCheck = true;
-        }
     }
 
 
