@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
     //Movement
     public float Acceleration = 10.0f;
@@ -14,14 +14,16 @@ public class PlayerController : MonoBehaviour
     Vector3 currentVelocity;
 
     //Jump
+    [SerializeField]
     private int pulosRestantes;
-    public int quantosPulos = 1;
+    public int quantosPulos = 2;
     public float raioChao;
     private float timerPulo;
     public float timerPuloSet = 0.15f;
     public float forcaPulo = 16.0f;
     public float multiPuloAlto = 0.5f;
     private bool podePular;
+    [SerializeField]
     private bool estaNoChao;
     private bool estaTentandoPular;
     private bool multiplicadorDePuloCheck;
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>();
         pulosRestantes = quantosPulos;
     }
@@ -55,8 +57,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckInput();
-        CheckIfCanJump();
-        CheckJump();
+        
+        //CheckJump();
         Walking();
         //CheckMovementDirection();
         //UpdateAnimations();
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //ApplyMovement();
+        CheckIfCanJump();
         CheckSurroundings();
     }
 
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
         direction = new Vector3(horizontalInput, 0, 0).normalized;
 
-        velocity = Vector3.SmoothDamp(velocity, direction * maxSpeed, ref  currentVelocity, maxSpeed/Acceleration);
+        velocity = Vector3.SmoothDamp(velocity, direction * maxSpeed, ref currentVelocity, maxSpeed/Acceleration);
 
         transform.position += velocity * Time.deltaTime;
     }
@@ -104,14 +107,14 @@ public class PlayerController : MonoBehaviour
     {
         if (podePular)
         {
-            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            rb.velocity = new Vector3(rb.velocity.x, forcaPulo,0);
             pulosRestantes--;
             timerPulo = 0;
             estaTentandoPular = false;
             multiplicadorDePuloCheck = true;
         }
     }
-        private void CheckJump()
+  /*      private void CheckJump()
     {
         if (timerPulo > 0) //time pulo == 0.15
         {
@@ -121,12 +124,12 @@ public class PlayerController : MonoBehaviour
         {
             timerPulo -= Time.deltaTime;
         }
-    }
+    }*/
 
     private void CheckInput()
     {
         //direcaoMovimento = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (estaNoChao || (pulosRestantes > 0))
             {
@@ -147,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 podeGirar = true;
             }
         }*/
-        if (multiplicadorDePuloCheck && !Input.GetButton("w"))
+        if (multiplicadorDePuloCheck && !Input.GetKeyDown(KeyCode.W))
         {
             multiplicadorDePuloCheck = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * multiPuloAlto);
