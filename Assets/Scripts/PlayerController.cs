@@ -15,21 +15,17 @@ public class PlayerController : MonoBehaviour
 
     //Jump
     [SerializeField]
-    private int pulosRestantes;
-    public int quantosPulos = 2;
+    private int pulosFeitos;
+    public int maxPulos = 2;
+    public float forcaPulo = 8.0f;
+    public float forceDown = 2.0f;
+    public float multiPuloAlto = 0.5f;
+    private bool onGround = true;
+
+    //Alguma outra coisa
     public float raioChao;
     private float timerPulo;
-    public float timerPuloSet = 0.15f;
-    public float forcaPulo = 16.0f;
-    public float multiPuloAlto = 0.5f;
-    private bool podePular;
-    [SerializeField]
-    private bool estaNoChao;
-    private bool estaTentandoPular;
-    private bool multiplicadorDePuloCheck;
-    public Transform chao;
-    public LayerMask whatIsGround;
-    public CharacterController controller;
+    
 
     /*private float direcaoMovimento;
     private float timerVira;
@@ -51,14 +47,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>();
-        pulosRestantes = quantosPulos;
     }
 
     // Update is called once per frame
     void Update()
     {
         Jump();
-        
         //CheckJump();
         Walking();
         //CheckMovementDirection();
@@ -69,14 +63,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //ApplyMovement();
-        CheckIfCanJump();
-        CheckSurroundings();
+        //CheckSurroundings();
     }
 
-    private void CheckSurroundings()
+   /* private void CheckSurroundings()
     {
         estaNoChao = Physics2D.OverlapCircle(chao.position, raioChao, whatIsGround);
-    }
+    }*/
 
     private void Walking(){
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -88,74 +81,28 @@ public class PlayerController : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
     }
 
-    //Logica para liberar pulo
-    private void CheckIfCanJump()
-    {
-        if (estaNoChao)
-        {
-            pulosRestantes = quantosPulos;
-        }
-        if (pulosRestantes <= 0)
-        {
-            podePular = false;
-        }
-        else
-        {
-            podePular = true;
-        }
-    }
-
-  /*      private void CheckJump()
-    {
-        if (timerPulo > 0) //time pulo == 0.15
-        {
-            NormalJump();
-        }
-        if (estaTentandoPular)
-        {
-            timerPulo -= Time.deltaTime;
-        }
-    }*/
 
     private void Jump()
     {
         //direcaoMovimento = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && (onGround || maxPulos>pulosFeitos))
         {
-            if(controller.isGrounded){
-                pulosRestantes = 2;
-            }
+                rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
+                onGround = false;
+                pulosFeitos++;
+        }
+        if (Input.GetKey(KeyCode.S) && !onGround)
+        {
+                rb.AddForce(Vector3.up * -forceDown, ForceMode.Impulse);
+        }
 
-            if (pulosRestantes > 0)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, forcaPulo,0);
-                pulosRestantes--;
-                timerPulo = 0;
-                estaTentandoPular = false;
-                multiplicadorDePuloCheck = true;
-            }
-            else
-            {
-                timerPulo = timerPuloSet; // timer pulo == 0.15
-                estaTentandoPular = true;
-            }
-        }
-       /* if (timerVira >= 0)
-        {
-            timerVira -= Time.deltaTime;
-            if (timerVira <= 0)
-            {
-                podeMover = true;
-                podeGirar = true;
-            }
-        }*/
-        if (multiplicadorDePuloCheck && !Input.GetKeyDown(KeyCode.W))
-        {
-            multiplicadorDePuloCheck = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * multiPuloAlto);
-        }
+
     }
 
+    void OnCollisionEnter(Collision collision){
+            onGround = true;
+            pulosFeitos = 0;
+        }
 
 /*
     // Moving fields
