@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float distanceBetweenImages;
     */
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,7 +58,6 @@ public class PlayerController : MonoBehaviour
         Walking();
         //CheckMovementDirection();
         //UpdateAnimations();
-
     }
 
     private void FixedUpdate()
