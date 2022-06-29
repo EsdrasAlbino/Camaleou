@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
     //Alguma outra coisa
     public float raioChao;
     private float timerPulo;
-    
 
+    //Animation
+    Animator anim;
     /*private float direcaoMovimento;
     private float timerVira;
     private int dierecaoOlhando = 1;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         //CheckJump();
         Walking();
+        Animation();
         //CheckMovementDirection();
         //UpdateAnimations();
     }
@@ -99,10 +101,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Animation() {
+        if(Input.GetAxis("Horizontal") != 0) {
+            anim.SetBool("IsWalking", true);
+        } else {
+            anim.SetBool("IsWalking", false);
+        }
+    }
+
     void OnCollisionEnter(Collision collision){
             onGround = true;
             pulosFeitos = 0;
         }
+    
 
 /*
     // Moving fields
