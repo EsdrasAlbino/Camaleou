@@ -1,0 +1,492 @@
+fileFormatVersion: 2
+guid: baa1e78cf571d56439385d94e6833a5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8366054726500497018
+    second: MonoWalkingWithout_0
+  - first:
+      213: -2110623545173597644
+    second: MonoWalkingWithout_1
+  - first:
+      213: -8828695878442720604
+    second: MonoWalkingWithout_2
+  - first:
+      213: 1366890598739199718
+    second: MonoWalkingWithout_3
+  - first:
+      213: 1631782243821270381
+    second: MonoWalkingWithout_4
+  - first:
+      213: 6832931279253714977
+    second: MonoWalkingWithout_5
+  - first:
+      213: 6621738388757848585
+    second: MonoWalkingWithout_6
+  - first:
+      213: 6480747519370812633
+    second: MonoWalkingWithout_7
+  - first:
+      213: 3252727001649513842
+    second: MonoWalkingWithout_8
+  - first:
+      213: -1248809092277672786
+    second: MonoWalkingWithout_9
+  - first:
+      213: 3643158173815489293
+    second: MonoWalkingWithout_10
+  - first:
+      213: -8833952171666392020
+    second: MonoWalkingWithout_11
+  - first:
+      213: -1573698369363720790
+    second: MonoWalkingWithout_12
+  - first:
+      213: -4519493507083458705
+    second: MonoWalkingWithout_13
+  - first:
+      213: -5863076823246381240
+    second: MonoWalkingWithout_14
+  - first:
+      213: 199321985835459068
+    second: MonoWalkingWithout_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MonoWalkingWithout_0
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 3657
+        width: 149
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a763a80d2723a1470800000000000000
+      internalID: 8366054726500497018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_1
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 3668
+        width: 146
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4322a57711f85b2e0800000000000000
+      internalID: -2110623545173597644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_2
+      rect:
+        serializedVersion: 2
+        x: 2890
+        y: 3671
+        width: 152
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2677fffdb2a7580800000000000000
+      internalID: -8828695878442720604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_3
+      rect:
+        serializedVersion: 2
+        x: 4089
+        y: 3674
+        width: 149
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6cba8e1cb28f210800000000000000
+      internalID: 1366890598739199718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_4
+      rect:
+        serializedVersion: 2
+        x: 5290
+        y: 3666
+        width: 155
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65b1c12e4145a610800000000000000
+      internalID: 1631782243821270381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_5
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 2594
+        width: 146
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128b29acbc273de50800000000000000
+      internalID: 6832931279253714977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_6
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 2591
+        width: 152
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902aa792bf325eb50800000000000000
+      internalID: 6621738388757848585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_7
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 2588
+        width: 149
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc571b488d30f950800000000000000
+      internalID: 6480747519370812633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_8
+      rect:
+        serializedVersion: 2
+        x: 4091
+        y: 2576
+        width: 149
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27504ac69f1042d20800000000000000
+      internalID: 3252727001649513842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_9
+      rect:
+        serializedVersion: 2
+        x: 5290
+        y: 2588
+        width: 146
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea4e28e3fb65baee0800000000000000
+      internalID: -1248809092277672786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_10
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 1510
+        width: 155
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0345da8e091f8230800000000000000
+      internalID: 3643158173815489293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_11
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1516
+        width: 149
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2cb80ddd4f776580800000000000000
+      internalID: -8833952171666392020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_12
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 1507
+        width: 158
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5c67ebba9192ae0800000000000000
+      internalID: -1573698369363720790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_13
+      rect:
+        serializedVersion: 2
+        x: 4089
+        y: 1516
+        width: 149
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f672b91c9988741c0800000000000000
+      internalID: -4519493507083458705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_14
+      rect:
+        serializedVersion: 2
+        x: 5290
+        y: 1510
+        width: 152
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fd29371ba22aea0800000000000000
+      internalID: -5863076823246381240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MonoWalkingWithout_15
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 428
+        width: 146
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf1e5a14a4224c200800000000000000
+      internalID: 199321985835459068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d0f6458ce99dc744eb3b8e1ef9cadee0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
