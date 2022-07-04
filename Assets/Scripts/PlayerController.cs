@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     //Animation
     Animator anim;
-    /*private float direcaoMovimento;
+    float horizontalInput;
     private float timerVira;
     private int dierecaoOlhando = 1;
     private bool estaOlhandoDireita = true;
@@ -37,6 +38,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool podeMover;
     private bool podeGirar;
+
+    //Vida
+    [SerializeField]
+    private int vida;
+    private int vidaMax = 3;
+
+    [SerializeField] Image coracaoNone;
+    [SerializeField] Image coracao;
+
+    [SerializeField] Image coracaoNone2;
+    [SerializeField] Image coracao2;
+    /*
+
     private Animator anim;
     public float chaoCheck;
     public float forcaAr = 0.95f;
@@ -47,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        vida = vidaMax;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }
@@ -55,16 +70,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Jump();
-        //CheckJump();
         Walking();
         Animation();
-        //CheckMovementDirection();
-        //UpdateAnimations();
+        CheckMovementDirection();
     }
 
     private void FixedUpdate()
     {
-        //ApplyMovement();
         //CheckSurroundings();
     }
 
@@ -72,9 +84,9 @@ public class PlayerController : MonoBehaviour
     {
         estaNoChao = Physics2D.OverlapCircle(chao.position, raioChao, whatIsGround);
     }*/
-
+    // Movimentacao Player
     private void Walking(){
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
 
         direction = new Vector3(horizontalInput, 0, 0).normalized;
 
@@ -83,7 +95,7 @@ public class PlayerController : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
     }
 
-
+    // Pulo Player
     private void Jump()
     {
         //direcaoMovimento = Input.GetAxisRaw("Horizontal");
@@ -97,10 +109,8 @@ public class PlayerController : MonoBehaviour
         {
                 rb.AddForce(Vector3.up * -forceDown, ForceMode.Impulse);
         }
-
-
     }
-
+    // Animacao Player
     private void Animation() {
         if(Input.GetAxis("Horizontal") != 0) {
             anim.SetBool("IsWalking", true);
@@ -109,11 +119,89 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+       private void CheckMovementDirection()
+    {
+        if (estaOlhandoDireita && horizontalInput < 0)
+        {
+            Flip();
+        }
+        else if (!estaOlhandoDireita && horizontalInput > 0)
+        {
+            Flip();
+        }
+        if (Mathf.Abs(rb.velocity.x) >= 0.01f)
+        {
+            estaAndando = true;
+        }
+        else
+        {
+            estaAndando = false;
+        }
+    }
+
+    public int GetFacingDirection()
+    {
+        return dierecaoOlhando;
+    }
+
+    public void DisableFlip()
+    {
+        podeGirar = false;
+    }
+    public void EnableFlip()
+    {
+        podeGirar = true;
+    }
+    private void Flip()
+    {
+        if (podeGirar)
+        {
+            dierecaoOlhando *= -1;
+            estaOlhandoDireita = !estaOlhandoDireita;
+            transform.Rotate(0.0f, 180.0f, 0.0f);
+        }
+    }
+    //Colisoes Player
     void OnCollisionEnter(Collision collision){
             onGround = true;
             pulosFeitos = 0;
         }
+
+    private void OnTriggerEnter(Collider col){
+        if(col.gameObject.CompareTag("Dano")){
+            Damage();
+        }
+    }
     
+    private void Damage(){
+        vida -= 1;
+
+        if(vida == 2){
+            coracao2.enabled = true;
+            coracaoNone2.enabled = false;
+        }
+        else{
+            coracao2.enabled = false;
+            coracaoNone2.enabled = true;
+        }
+
+        
+        if(vida == 1){
+            coracao2.enabled = true;
+            coracaoNone2.enabled = false;
+
+            coracao.enabled = true;
+            coracaoNone.enabled = false;
+        }
+        else{
+            coracao.enabled = false;
+            coracaoNone.enabled = true;
+        }
+
+        if(vida <= 0){
+            Debug.Log("PLAYER MORREU");
+        }
+    }
 
 /*
     // Moving fields
@@ -155,70 +243,6 @@ public class PlayerController : MonoBehaviour
 }*/
 
 
-
-
-
-    
-   /* private void CheckMovementDirection()
-    {
-        if (estaOlhandoDireita && direcaoMovimento < 0)
-        {
-            Flip();
-        }
-        else if (!estaOlhandoDireita && direcaoMovimento > 0)
-        {
-            Flip();
-        }
-        if (Mathf.Abs(rb.velocity.x) >= 0.01f)
-        {
-            estaAndando = true;
-        }
-        else
-        {
-            estaAndando = false;
-        }
-    }
-    private void UpdateAnimations()
-    {
-        //anim.SetBool("isWalking", estaAndando);
-        //anim.SetBool("isGrounded", estaNoChao);
-        //anim.SetFloat("yVelocity", rb.velocity.y);
-    }
-
-    public int GetFacingDirection()
-    {
-        return dierecaoOlhando;
-    }
-
-
-   private void ApplyMovement()
-    {
-        if (!estaNoChao && direcaoMovimento == 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x * forcaAr, rb.velocity.y);
-        }
-        else if (podeMover)
-        {
-            rb.velocity = new Vector2(velocidadeMovimentacao * direcaoMovimento, rb.velocity.y);
-        }
-    }
-    public void DisableFlip()
-    {
-        podeGirar = false;
-    }
-    public void EnableFlip()
-    {
-        podeGirar = true;
-    }
-    private void Flip()
-    {
-        if (podeGirar)
-        {
-            dierecaoOlhando *= -1;
-            estaOlhandoDireita = !estaOlhandoDireita;
-            transform.Rotate(0.0f, 180.0f, 0.0f);
-        }
-    }
    /* private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(chao.position, raioChao);
