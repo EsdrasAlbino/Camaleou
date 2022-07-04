@@ -1,11 +1,20 @@
 {
   "dependencies": {
     "com.unity.2d.animation": {
+<<<<<<< HEAD
       "version": "7.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "6.0.3",
+=======
+      "version": "6.0.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.common": "5.0.0",
+        "com.unity.mathematics": "1.1.0",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
@@ -13,14 +22,16 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
+<<<<<<< HEAD
       "version": "6.0.3",
+=======
+      "version": "5.0.0",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.sprite": "1.0.0",
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.burst": "1.5.1"
+        "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -37,6 +48,7 @@
       "source": "builtin",
       "dependencies": {}
     },
+<<<<<<< HEAD
     "com.unity.2d.spriteshape": {
       "version": "7.0.4",
       "depth": 0,
@@ -58,19 +70,29 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
     "com.unity.cinemachine": {
-      "version": "2.8.6",
+      "version": "2.7.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
+<<<<<<< HEAD
       "version": "1.15.18",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.services.core": "1.0.1"
+=======
+      "version": "1.7.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0"
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       },
       "url": "https://packages.unity.com"
     },
@@ -82,7 +104,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
+<<<<<<< HEAD
       "version": "3.0.14",
+=======
+      "version": "3.0.15",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -91,7 +117,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
+<<<<<<< HEAD
       "version": "2.0.15",
+=======
+      "version": "2.0.16",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -107,7 +137,18 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
+<<<<<<< HEAD
       "version": "1.2.6",
+=======
+      "version": "1.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.0",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -129,6 +170,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.services.core": {
       "version": "1.4.0",
       "depth": 1,
@@ -140,6 +182,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
     "com.unity.test-framework": {
       "version": "1.1.31",
       "depth": 0,
@@ -161,7 +205,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
+<<<<<<< HEAD
       "version": "1.6.4",
+=======
+      "version": "1.5.7",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -182,12 +230,21 @@
       }
     },
     "com.unity.visualscripting": {
+<<<<<<< HEAD
       "version": "1.7.8",
+=======
+      "version": "1.6.1",
+>>>>>>> f46d15f0703cc064c7324ab2f052dbabe5a7469f
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
+        "com.unity.modules.ai": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
